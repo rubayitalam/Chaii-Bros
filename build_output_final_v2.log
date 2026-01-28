@@ -1,0 +1,59 @@
+
+> chaii-bros@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/alabid/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/alabid/Desktop/Rubayit/ChaiiBros/package-lock.json
+
+   ▲ Next.js 15.5.9
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+(node:74758) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled successfully in 8.4s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/22) ...
+   Generating static pages (5/22) 
+   Generating static pages (10/22) 
+   Generating static pages (16/22) 
+ ✓ Generating static pages (22/22)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    3.75 kB         238 kB
+├ ○ /_not-found                            996 B         103 kB
+├ ○ /about                               2.34 kB         228 kB
+├ ○ /admin                               3.23 kB         226 kB
+├ ○ /admin/about                         3.87 kB         229 kB
+├ ○ /admin/enquiries                     3.33 kB         223 kB
+├ ○ /admin/gallery                       3.17 kB         228 kB
+├ ○ /admin/homepage                      4.58 kB         229 kB
+├ ○ /admin/legal                         3.05 kB         222 kB
+├ ○ /admin/login                         1.35 kB         219 kB
+├ ○ /admin/menu                          3.73 kB         229 kB
+├ ○ /admin/packages                      4.14 kB         229 kB
+├ ○ /admin/settings                      3.53 kB         223 kB
+├ ○ /contact                             2.54 kB         223 kB
+├ ○ /faq                                 1.42 kB         104 kB
+├ ○ /legal/nutrition                     2.02 kB         219 kB
+├ ○ /legal/privacy                       3.18 kB         220 kB
+├ ○ /legal/terms                         4.38 kB         222 kB
+├ ○ /menu                                2.23 kB         104 kB
+├ ƒ /menu/[slug]                         1.89 kB         228 kB
+└ ○ /packages                            1.94 kB         219 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-cb395327542b56ef.js       45.9 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

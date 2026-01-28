@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chaii Bros Design System - Warm, Elegant, Premium Event Catering - STRICT MATCH */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Precise match from reference inspection */
+    --background: 30 33% 96%;
+    /* #F7F3EF */
+    --foreground: 20 40% 16%;
+    /* #392318 (Matches rgb(57, 35, 24)) */
+
+    /* Primary Button Background: #E3D1BF used as Secondary */
+    --secondary: 34 35% 82%;
+    /* rgb(227, 209, 191) -> #E3D1BF */
+    --secondary-foreground: 20 40% 16%;
+
+    /* Primary Accent (Copper): #C17A3A */
+    --primary: 28 65% 50%;
+    --primary-foreground: 30 33% 96%;
+
+    /* Footer Colors */
+    --footer-bg: 20 45% 12%;
+    /* #2C1A11 */
+    --footer-link: 30 33% 85%;
+    /* #EBE2D9 */
+
+    /* Standard Defaults */
+    --card: 30 33% 96%;
+    --card-foreground: 20 40% 16%;
+    --popover: 30 33% 96%;
+    --popover-foreground: 20 40% 16%;
+    --muted: 30 25% 90%;
+    --muted-foreground: 20 20% 45%;
+    --accent: 28 65% 50%;
+    --accent-foreground: 30 33% 96%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 30 25% 85%;
+    --input: 30 25% 85%;
+    --ring: 28 65% 50%;
+    --radius: 0;
+
+    /* Custom Chaii Bros Colors (Legacy support + Variables) */
+    --chaii-cream: 30 33% 96%;
+    --chaii-cream-dark: 30 30% 92%;
+    --chaii-tan: 34 35% 82%;
+    /* Updated to match new secondary #E3D1BF */
+    --chaii-copper: 28 65% 50%;
+    --chaii-brown: 20 40% 16%;
+    --chaii-brown-dark: 20 45% 12%;
+
+    /* Hero Gradient Stops */
+    --hero-gradient-start: 30 35% 75%;
+    /* Approximate for variable use */
+    --hero-gradient-end: 30 33% 96%;
+
+    /* Sidebar - Defaults */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 20 45% 12%;
+    --foreground: 30 33% 96%;
+    --card: 20 40% 16%;
+    --card-foreground: 30 33% 96%;
+    --popover: 20 40% 16%;
+    --popover-foreground: 30 33% 96%;
+    --primary: 28 65% 55%;
+    --primary-foreground: 20 40% 16%;
+    --secondary: 20 30% 25%;
+    --secondary-foreground: 30 33% 96%;
+    --muted: 20 30% 20%;
+    --muted-foreground: 30 20% 70%;
+    --accent: 28 65% 55%;
+    --accent-foreground: 20 40% 16%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 20 30% 25%;
+    --input: 20 30% 25%;
+    --ring: 28 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-serif), serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-[#392318];
+    /* Explicit dark brown */
+    font-family: var(--font-serif), serif;
+    letter-spacing: 0.1em;
+  }
+}
+
+@layer components {
+
+  /* Typography Classes */
+  .font-display {
+    font-family: var(--font-serif), serif;
+  }
+
+  .font-script {
+    font-family: var(--font-script), cursive;
+    @apply text-[#C17A3A];
+    /* Copper accent for script */
+  }
+
+  /* Logo Typography */
+  .logo-text {
+    font-family: var(--font-serif), serif;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  /* Hero Section Gradient - EXACT MATCH */
+  .hero-gradient {
+    background: linear-gradient(180deg,
+        #D6BFA9 0%,
+        /* Start Tan */
+        #EAE0D6 50%,
+        /* Middle Cream */
+        #F8F5F1 100%
+        /* End Off-white */
+      );
+  }
+
+  /* Navigation link style */
+  .nav-link {
+    @apply text-[#392318] font-display text-sm tracking-[0.15em] uppercase transition-colors hover:text-[#C17A3A];
+  }
+
+  /* CTA Button Styles - EXACT MATCH */
+  .btn-primary {
+    @apply bg-[#E3D1BF] text-[#392318] font-display uppercase text-sm border border-[#392318]/20 transition-all hover:bg-[#D6C4B0];
+    letter-spacing: 0.2em;
+    /* ~2.8px */
+    padding: 16px 32px;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-[#392318] border border-[#392318] font-display uppercase text-sm transition-all hover:bg-[#392318] hover:text-[#F7F3EF];
+    letter-spacing: 0.2em;
+    padding: 16px 32px;
+  }
+
+  .btn-solid {
+    @apply bg-[#E3D1BF] text-[#392318] font-display tracking-[0.15em] uppercase text-sm px-10 py-4 transition-all hover:bg-[#D6C4B0];
+  }
+
+  /* Section title with script + sans combo */
+  .section-title-script {
+    @apply font-script text-4xl md:text-5xl text-[#392318];
+  }
+
+  .section-title-sans {
+    @apply font-display text-2xl md:text-3xl tracking-[0.15em] uppercase text-[#392318] font-normal;
+  }
+
+  /* Product Card Overlay Text */
+  .product-label {
+    @apply font-display text-xl md:text-2xl uppercase text-white font-medium drop-shadow-lg;
+    letter-spacing: 0.1em;
+  }
+
+  /* Footer Styles - EXACT MATCH */
+  .footer-bg {
+    @apply bg-[#2C1A11] text-[#EBE2D9];
+  }
+
+  .footer-link {
+    @apply text-[#EBE2D9] font-display tracking-[0.1em] uppercase text-sm hover:text-white transition-colors;
+  }
+}
+
+@layer utilities {
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Image stack effect for hero */
+  .image-stack {
+    @apply relative;
+  }
+
+  .image-stack>*:nth-child(1) {
+    @apply absolute -top-4 -left-4 rotate-[-8deg] shadow-xl;
+  }
+
+  .image-stack>*:nth-child(2) {
+    @apply absolute top-8 left-8 rotate-[3deg] shadow-xl;
+  }
+
+  .image-stack>*:nth-child(3) {
+    @apply relative z-10 rotate-[5deg] shadow-2xl;
+  }
+}
