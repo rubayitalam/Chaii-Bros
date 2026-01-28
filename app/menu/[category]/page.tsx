@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { db } from "@/lib/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import type { CategoryPage } from "@/lib/types";
@@ -39,9 +40,9 @@ export default function DynamicCategoryPage() {
 
     if (!pageData) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] flex-col gap-4">
+                <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] flex-col gap-4">
                 <p className="text-xl font-serif text-[#4A3B32]">Page not found.</p>
-                <a href="/menu" className="text-[#A47E5B] underline underline-offset-4">Return to Menu</a>
+                <Link href="/menu" className="text-[#A47E5B] underline underline-offset-4">Return to Menu</Link>
             </div>
         );
     }

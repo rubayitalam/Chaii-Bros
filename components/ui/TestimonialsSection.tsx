@@ -51,7 +51,7 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
             <div className="container mx-auto px-6 md:px-12 lg:px-20">
                 <div className="text-center mb-16">
                     <h2 className="font-display text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase text-[#3D342B] opacity-90 italic">
-                        DON'T JUST TAKE OUR WORD FOR IT
+                        DON&apos;T JUST TAKE OUR WORD FOR IT
                     </h2>
                 </div>
 
