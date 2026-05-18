@@ -30,8 +30,8 @@ const HeroSection = ({ slides }: { slides: Slide[] }) => {
     const nextSlide = slides[(currentSlide + 1) % slides.length];
 
     return (
-        <section className="hero-gradient min-h-screen relative overflow-hidden">
-            <div className="container mx-auto px-6 md:px-12 lg:px-20 pt-28 md:pt-32 pb-16 md:pb-20">
+        <section className="hero-gradient min-h-screen relative overflow-hidden pt-20">
+            <div className="container mx-auto px-6 md:px-12 lg:px-20 pt-12 md:pt-16 pb-16 md:pb-20">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[75vh]">
                     {/* Left Content */}
                     <div 

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Instagram, Linkedin, Facebook } from "lucide-react";
 
 const Footer = () => {
@@ -43,13 +42,21 @@ const Footer = () => {
 
                     {/* Logo and Social */}
                     <div className="flex flex-col items-start lg:items-center gap-4">
-                        <Image
-                            src="/images/logo-footer.png"
-                            alt="Chaii Bros"
-                            width={120}
-                            height={100}
-                            className="w-28 h-auto object-contain opacity-90"
-                        />
+                        <div style={{
+                          fontFamily: 'var(--font-brand)',
+                          fontWeight: '400',
+                          fontSize: '2.2rem',
+                          letterSpacing: '0.15em',
+                          lineHeight: '1.0',
+                          textTransform: 'uppercase',
+                          color: 'hsl(30, 33%, 85%)',
+                          textAlign: 'center'
+                        }}>
+                          CHAII<br/>BROS.<span style={{
+                            fontSize: '0.5em',
+                            verticalAlign: 'super'
+                          }}>®</span>
+                        </div>
                         <div className="flex items-center gap-4">
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[hsl(30_33%_85%)] hover:text-white transition-colors">
                                 <Instagram className="w-6 h-6" />

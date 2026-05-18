@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Cormorant_Garamond, Dancing_Script, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -25,6 +26,18 @@ const jost = Jost({
   display: "swap",
 });
 
+const brandFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/Brand.woff",
+      weight: "400",
+      style: "normal",
+    }
+  ],
+  variable: "--font-brand",
+  display: "swap",
+});
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -36,7 +49,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${cormorant.variable} ${dancing.variable} ${jost.variable}`}
+                className={`${cormorant.variable} ${dancing.variable} ${jost.variable} ${brandFont.variable}`}
             >
                 {!isAdmin && <Navbar />}
                 <main className="min-h-screen">

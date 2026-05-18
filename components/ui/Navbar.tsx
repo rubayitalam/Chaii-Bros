@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -30,25 +29,29 @@ const Navbar = () => {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-[999] px-6 md:px-12 lg:px-20 transition-[padding,background-color,box-shadow] duration-500",
-                "h-auto min-h-[5rem] flex items-center pt-[env(safe-area-inset-top)]",
-                // Mobile: Always py-5 to ensure safe space. Desktop: varied.
+                "fixed top-0 left-0 right-0 z-[999] px-6 md:px-12 lg:px-20 transition-[background-color,box-shadow] duration-500",
+                "h-20 flex items-center pt-[env(safe-area-inset-top)]",
                 isScrolled
-                    ? "bg-[#F7F3EF]/95 backdrop-blur-md shadow-md py-5 md:py-4 border-b border-copper/10"
-                    : "bg-transparent py-5 md:py-8 focus-within:bg-[#F7F3EF]"
+                    ? "bg-[#F7F3EF]/95 backdrop-blur-md shadow-md border-b border-copper/10"
+                    : "bg-transparent focus-within:bg-[#F7F3EF]"
             )}
         >
             <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
                 {/* Logo */}
-                <Link href="/">
-                    <Image
-                        src="/images/logo-header.png"
-                        alt="Chaii Bros"
-                        width={160}
-                        height={48}
-                        className="h-10 w-auto object-contain"
-                        priority
-                    />
+                <Link 
+                  href="/" 
+                  style={{
+                    fontFamily: 'var(--font-brand)',
+                    fontWeight: '400',
+                    fontSize: '1.5rem',
+                    letterSpacing: '0.35em',
+                    color: '#392318',
+                    textDecoration: 'none',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  CHAII BROS
                 </Link>
 
                 {/* Desktop Navigation */}
