@@ -83,14 +83,14 @@ export default function AboutPage() {
                                 />
                             </div>
                             <div className="space-y-8 order-1 md:order-2">
-                                <p className="font-serif text-xl text-brown/70 italic leading-relaxed">
+                                <p className="font-[family-name:var(--font-jost)] text-xl text-brown/70 italic leading-relaxed">
                                     {about?.paragraph2 || "Through meticulous testing in our kitchen, we perfected our signature chai recipe, blending traditional South Asian flavours with contemporary sophistication. Since our first booking in November 2019, that recipe remains untouched because quality truly comes before quantity."}
                                 </p>
                             </div>
                         </div>
 
                         <div className="text-center space-y-12">
-                            <p className="font-serif text-2xl text-brown italic leading-relaxed max-w-3xl mx-auto">
+                            <p className="font-[family-name:var(--font-jost)] text-2xl text-brown italic leading-relaxed max-w-3xl mx-auto">
                                 {about?.paragraph3 || "Today, Chai Bros is a trusted name in UK events and catering. We've expanded to include urban iced coffee, premium matcha, gourmet pancakes, and chocolate dipped strawberries, delivering five-star quality to every event big or small."}
                             </p>
                             <div className="relative h-[400px] w-full max-w-3xl mx-auto overflow-hidden shadow-3xl">
