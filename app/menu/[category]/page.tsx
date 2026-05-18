@@ -67,7 +67,11 @@ export default function DynamicCategoryPage() {
         );
     }
 
-    const displayFlavours = dbFlavours.length > 0 ? dbFlavours : (pageData.flavours || []);
+    let rawFlavours = dbFlavours.length > 0 ? dbFlavours : (pageData.flavours || []);
+    if (categorySlug === "iced-coffee") {
+        rawFlavours = ["CARAMEL", "FRENCH VANILLA", "PISTACHIO", "ORIGINAL"];
+    }
+    const displayFlavours = rawFlavours.map(f => f.toUpperCase());
 
     return (
         <div className="min-h-screen bg-[#FDFBF7] text-[#4A3B32]">
@@ -117,7 +121,7 @@ export default function DynamicCategoryPage() {
                                             className={`w-full py-3 px-6 text-center uppercase tracking-[0.1em] text-xs md:text-sm font-medium transition-all text-[#392318] focus:outline-none ${
                                                 selectedFlavour === index
                                                     ? 'border-2 border-[#C17A3A] bg-[#C17A3A]/10'
-                                                    : 'border border-[#C17A3A]/40'
+                                                    : 'border border-[#C17A3A]/40 bg-transparent'
                                             }`}
                                         >
                                             {flavour}

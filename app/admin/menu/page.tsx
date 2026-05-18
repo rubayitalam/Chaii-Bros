@@ -36,7 +36,8 @@ export default function AdminMenuManager() {
                 imageUrl: editingItem.imageUrl || "",
                 category: editingItem.category || "Drinks",
                 price: Number(editingItem.price) || 0,
-                flavors: editingItem.flavors || [],
+                flavours: editingItem.flavours || editingItem.flavors || [],
+                flavors: editingItem.flavours || editingItem.flavors || [],
                 tags: editingItem.tags || [],
                 slug: editingItem.name?.toLowerCase().replace(/ /g, "-") || "",
                 order: editingItem.order || items.length + 1,
@@ -102,7 +103,7 @@ export default function AdminMenuManager() {
                     <p className="text-sm text-brown/50 font-sans tracking-wide">Manage the masterpiece grid items on your homepage and menu</p>
                 </div>
                 <button
-                    onClick={() => setEditingItem({ name: "", description: "", imageUrl: "", flavors: [], tags: [], category: "Drinks", price: 0, order: items.length + 1 })}
+                    onClick={() => setEditingItem({ name: "", description: "", imageUrl: "", flavors: [], flavours: [], tags: [], category: "Drinks", price: 0, order: items.length + 1 })}
                     className="flex items-center gap-2 px-6 py-3 bg-brown text-cream rounded-xl hover:bg-brown/90 transition-all font-sans text-sm font-bold shadow-lg"
                 >
                     <FiPlus /> Add New Item
@@ -242,9 +243,10 @@ export default function AdminMenuManager() {
                                             type="button"
                                             onClick={() => {
                                                 if (newFlavor.trim() !== "") {
-                                                    const currentFlavors = editingItem.flavors || [];
+                                                    const currentFlavors = editingItem.flavours || editingItem.flavors || [];
                                                     setEditingItem({
                                                         ...editingItem,
+                                                        flavours: [...currentFlavors, newFlavor.trim()],
                                                         flavors: [...currentFlavors, newFlavor.trim()]
                                                     });
                                                     setNewFlavor("");
@@ -256,16 +258,17 @@ export default function AdminMenuManager() {
                                         </button>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
-                                        {(editingItem.flavors || []).map((flavor, index) => (
+                                        {(editingItem.flavours || editingItem.flavors || []).map((flavor, index) => (
                                             <div key={index} className="flex items-center gap-2 bg-[#F7F3EF] border border-copper/20 px-3 py-1.5 rounded-lg text-xs text-brown">
                                                 <span>{flavor}</span>
                                                 <button
                                                     type="button"
                                                     onClick={() => {
-                                                        const updated = [...(editingItem.flavors || [])];
+                                                        const updated = [...(editingItem.flavours || editingItem.flavors || [])];
                                                         updated.splice(index, 1);
                                                         setEditingItem({
                                                             ...editingItem,
+                                                            flavours: updated,
                                                             flavors: updated
                                                         });
                                                     }}
@@ -275,7 +278,7 @@ export default function AdminMenuManager() {
                                                 </button>
                                             </div>
                                         ))}
-                                        {(editingItem.flavors || []).length === 0 && (
+                                        {(editingItem.flavours || editingItem.flavors || []).length === 0 && (
                                             <p className="text-xs text-brown/40 italic">No flavours added yet.</p>
                                         )}
                                     </div>
