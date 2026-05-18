@@ -47,7 +47,7 @@ export default function RootLayout({
     const isAdmin = pathname?.startsWith("/admin");
 
     return (
-        <html lang="en">
+        <html lang="en-GB">
             <body
                 className={`${cormorant.variable} ${dancing.variable} ${jost.variable} ${brandFont.variable}`}
             >
