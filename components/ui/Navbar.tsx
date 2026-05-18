@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -39,8 +40,15 @@ const Navbar = () => {
         >
             <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
                 {/* Logo */}
-                <Link href="/" className="logo-text text-foreground text-xl md:text-2xl transition-colors">
-                    CHAII BROS
+                <Link href="/">
+                    <Image
+                        src="/images/logo-header.png"
+                        alt="Chaii Bros"
+                        width={160}
+                        height={48}
+                        className="h-10 w-auto object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}

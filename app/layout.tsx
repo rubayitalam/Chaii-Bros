@@ -1,27 +1,28 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Dancing_Script, Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Dancing_Script, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 
-const dancingScript = Dancing_Script({
-    subsets: ["latin"],
-    variable: "--font-script",
-    weight: ["400", "700"],
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
-    subsets: ["latin"],
-    variable: "--font-serif",
-    weight: ["300", "400", "500", "600", "700"],
+const dancing = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-script",
+  display: "swap",
 });
 
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-sans",
-    weight: ["400", "500", "600", "700"],
+const jost = Jost({
+  subsets: ["latin"],
+  variable: "--font-jost",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -35,7 +36,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${dancingScript.variable} ${cormorantGaramond.variable} ${inter.variable} font-sans`}
+                className={`${cormorant.variable} ${dancing.variable} ${jost.variable}`}
             >
                 {!isAdmin && <Navbar />}
                 <main className="min-h-screen">

@@ -13,6 +13,7 @@ export default function AdminMenuManager() {
     const [editingItem, setEditingItem] = useState<Partial<MenuItem> | null>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
+    const [newFlavor, setNewFlavor] = useState("");
 
     useEffect(() => {
         const q = query(collection(db, "menuItems"), orderBy("order", "asc"));
@@ -47,6 +48,7 @@ export default function AdminMenuManager() {
                 await addDoc(collection(db, "menuItems"), data);
             }
             setEditingItem(null);
+            setNewFlavor("");
         } catch (err) {
             console.error("Error saving menu item:", err);
             alert("Failed to save item.");
@@ -227,14 +229,56 @@ export default function AdminMenuManager() {
                                     />
                                 </div>
                                 <div className="md:col-span-2">
-                                    <label className="flex items-center gap-2 text-xs font-bold text-brown/40 uppercase tracking-widest mb-2">Flavors (Comma separated)</label>
-                                    <input
-                                        type="text"
-                                        value={editingItem.flavors?.join(', ')}
-                                        onChange={e => setEditingItem({ ...editingItem, flavors: e.target.value.split(',').map(s => s.trim()) })}
-                                        className="w-full px-5 py-3.5 bg-white border border-copper/20 rounded-xl focus:ring-2 focus:ring-copper outline-none font-serif text-brown"
-                                        placeholder="e.g., Cinnamon, Cardamom, Saffron"
-                                    />
+                                    <label className="flex items-center gap-2 text-xs font-bold text-brown/40 uppercase tracking-widest mb-2">Flavours</label>
+                                    <div className="flex gap-2 mb-3">
+                                        <input
+                                            type="text"
+                                            value={newFlavor}
+                                            onChange={e => setNewFlavor(e.target.value)}
+                                            className="flex-1 px-5 py-3 bg-white border border-copper/20 rounded-xl focus:ring-2 focus:ring-copper outline-none font-sans text-sm text-brown"
+                                            placeholder="Add a new flavor (e.g. Cinnamon)"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                if (newFlavor.trim() !== "") {
+                                                    const currentFlavors = editingItem.flavors || [];
+                                                    setEditingItem({
+                                                        ...editingItem,
+                                                        flavors: [...currentFlavors, newFlavor.trim()]
+                                                    });
+                                                    setNewFlavor("");
+                                                }
+                                            }}
+                                            className="px-6 py-3 bg-copper text-cream rounded-xl hover:bg-copper/90 transition-all font-sans text-xs font-bold"
+                                        >
+                                            Add
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {(editingItem.flavors || []).map((flavor, index) => (
+                                            <div key={index} className="flex items-center gap-2 bg-[#F7F3EF] border border-copper/20 px-3 py-1.5 rounded-lg text-xs text-brown">
+                                                <span>{flavor}</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        const updated = [...(editingItem.flavors || [])];
+                                                        updated.splice(index, 1);
+                                                        setEditingItem({
+                                                            ...editingItem,
+                                                            flavors: updated
+                                                        });
+                                                    }}
+                                                    className="text-red-500 hover:text-red-700 transition-colors"
+                                                >
+                                                    <FiTrash2 size={14} />
+                                                </button>
+                                            </div>
+                                        ))}
+                                        {(editingItem.flavors || []).length === 0 && (
+                                            <p className="text-xs text-brown/40 italic">No flavours added yet.</p>
+                                        )}
+                                    </div>
                                 </div>
                                 <div className="md:col-span-2">
                                     <label className="flex items-center gap-2 text-xs font-bold text-brown/40 uppercase tracking-widest mb-2"><FiImage size={12} /> External Image URL</label>

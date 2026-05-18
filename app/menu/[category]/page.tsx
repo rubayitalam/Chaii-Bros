@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/lib/firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, collection, query, where } from "firebase/firestore";
 import type { CategoryPage } from "@/lib/types";
 
 export default function DynamicCategoryPage() {
@@ -13,11 +13,15 @@ export default function DynamicCategoryPage() {
     const categorySlug = params.category as string;
 
     const [pageData, setPageData] = useState<CategoryPage | null>(null);
+    const [dbFlavours, setDbFlavours] = useState<string[]>([]);
+    const [selectedFlavour, setSelectedFlavour] = useState<number>(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!categorySlug) return;
         setLoading(true);
+        
+        // Fetch page details (e.g. images, text)
         const pageRef = doc(db, "categoryPages", categorySlug);
         const unsubscribePage = onSnapshot(pageRef, (docSnap) => {
             if (docSnap.exists()) {
@@ -27,7 +31,23 @@ export default function DynamicCategoryPage() {
             }
             setLoading(false);
         });
-        return () => unsubscribePage();
+
+        // Fetch flavors dynamically from menuItems collection matching this slug
+        const menuQuery = query(collection(db, "menuItems"), where("slug", "==", categorySlug));
+        const unsubscribeMenu = onSnapshot(menuQuery, (snapshot) => {
+            if (!snapshot.empty) {
+                const itemData = snapshot.docs[0].data();
+                const favs = itemData.flavors || itemData.flavours || [];
+                setDbFlavours(favs);
+            } else {
+                setDbFlavours([]);
+            }
+        });
+
+        return () => {
+            unsubscribePage();
+            unsubscribeMenu();
+        };
     }, [categorySlug]);
 
     if (loading) {
@@ -40,12 +60,14 @@ export default function DynamicCategoryPage() {
 
     if (!pageData) {
         return (
-                <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] flex-col gap-4">
+            <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] flex-col gap-4">
                 <p className="text-xl font-serif text-[#4A3B32]">Page not found.</p>
                 <Link href="/menu" className="text-[#A47E5B] underline underline-offset-4">Return to Menu</Link>
             </div>
         );
     }
+
+    const displayFlavours = dbFlavours.length > 0 ? dbFlavours : (pageData.flavours || []);
 
     return (
         <div className="min-h-screen bg-[#FDFBF7] text-[#4A3B32]">
@@ -82,19 +104,24 @@ export default function DynamicCategoryPage() {
                         </div>
 
                         {/* Flavours List */}
-                        {pageData.flavours && pageData.flavours.length > 0 && (
+                        {displayFlavours.length > 0 && (
                             <div className="space-y-6">
                                 <h2 className="font-sans text-lg md:text-xl uppercase tracking-[0.05em] text-[#4A3B32] font-normal">
                                     FLAVOURS
                                 </h2>
                                 <div className="flex flex-col gap-3">
-                                    {pageData.flavours.map((flavour, index) => (
-                                        <div
+                                    {displayFlavours.map((flavour, index) => (
+                                        <button
                                             key={index}
-                                            className={`w-full py-3 px-6 text-center uppercase tracking-[0.1em] text-xs md:text-sm font-medium transition-colors border border-[#D4C5B5] ${index === 0 ? 'bg-[#C8B29E] text-[#4A3B32]' : 'bg-[#EBE5DF] text-[#4A3B32]/80'}`}
+                                            onClick={() => setSelectedFlavour(index)}
+                                            className={`w-full py-3 px-6 text-center uppercase tracking-[0.1em] text-xs md:text-sm font-medium transition-all text-[#392318] focus:outline-none ${
+                                                selectedFlavour === index
+                                                    ? 'border-2 border-[#C17A3A] bg-[#C17A3A]/10'
+                                                    : 'border border-[#C17A3A]/40'
+                                            }`}
                                         >
                                             {flavour}
-                                        </div>
+                                        </button>
                                     ))}
                                 </div>
                             </div>

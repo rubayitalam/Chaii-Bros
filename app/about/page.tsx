@@ -57,7 +57,7 @@ export default function AboutPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                             <div className="space-y-8">
-                                <p className="font-serif text-xl text-brown/70 italic leading-relaxed">
+                                <p className="font-[family-name:var(--font-jost)] text-base md:text-lg leading-relaxed text-[#392318] font-normal">
                                     {about?.paragraph1 || "Established in 2019 in Birmingham, Chai Bros began with two friends, Razi and Abid, sharing their love, travel and a vision to bring authentic, premium chai to the events industry as the UK's first mobile chai bar."}
                                 </p>
                             </div>

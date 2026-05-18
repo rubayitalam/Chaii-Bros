@@ -98,7 +98,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-serif), serif;
+    font-family: var(--font-jost), sans-serif;
   }
 
   h1,
@@ -123,8 +123,7 @@
 
   .font-script {
     font-family: var(--font-script), cursive;
-    @apply text-[#C17A3A];
-    /* Copper accent for script */
+    color: #C17A3A;
   }
 
   /* Logo Typography */
@@ -172,7 +171,8 @@
 
   /* Section title with script + sans combo */
   .section-title-script {
-    @apply font-script text-4xl md:text-5xl text-[#392318];
+    font-family: var(--font-script), cursive;
+    @apply text-4xl md:text-5xl text-[#392318];
   }
 
   .section-title-sans {

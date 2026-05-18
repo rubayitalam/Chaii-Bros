@@ -19,7 +19,11 @@ const DiscoverSection = ({ items }: DiscoverSectionProps) => {
         { id: "6", name: "CHOCOLATE\nSTRAWBERRIES", description: "Sweet indulgence", price: 0, category: "Dessert", imageUrl: "/images/hero/pancakes.png", order: 6, slug: "strawberries" },
     ];
 
-    const displayItems = items.length > 0 ? items : fallbackItems;
+    const allowed = ["chaii", "moctails", "mocktails", "mini dutch pancakes"];
+    const baseItems = items.length > 0 ? items : fallbackItems;
+    const displayItems = baseItems.filter(item =>
+        allowed.some(name => item.name.toLowerCase().includes(name))
+    );
 
     return (
         <section id="menu" className="bg-background py-20 md:py-28">
@@ -61,6 +65,13 @@ const DiscoverSection = ({ items }: DiscoverSectionProps) => {
                             </div>
                         </Link>
                     ))}
+                </div>
+
+                {/* View Menu Button */}
+                <div className="flex justify-center mt-12">
+                    <Link href="/menu" className="btn-primary">
+                        VIEW MENU
+                    </Link>
                 </div>
             </div>
         </section>
