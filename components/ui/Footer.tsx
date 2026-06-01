@@ -44,7 +44,7 @@ const Footer = () => {
                     {/* Logo and Social */}
                     <div className="flex flex-col items-start lg:items-center gap-4">
                         <Image
-                          src="/images/logo-footer.png"
+                          src="/images/logo-footer-white.png"
                           alt="Chaii Bros"
                           width={150}
                           height={130}
