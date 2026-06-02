@@ -40,11 +40,11 @@ const HeroSection = ({ slides }: { slides: Slide[] }) => {
                     >
                         <div className="space-y-4">
                             {mainSlide.subtitle && (
-                                <p className="font-script text-primary text-3xl md:text-4xl font-normal leading-none">
+                                <p className="font-[family-name:var(--font-amalfi)] text-primary text-3xl md:text-4xl font-normal leading-none">
                                     {mainSlide.subtitle}
                                 </p>
                             )}
-                            <h1 className="font-serif uppercase tracking-widest text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.15] text-foreground font-light">
+                            <h1 className="font-[family-name:var(--font-brand)] uppercase tracking-widest text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.15] text-foreground font-light">
                                 {mainSlide.title}
                             </h1>
                         </div>

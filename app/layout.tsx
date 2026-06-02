@@ -29,12 +29,24 @@ const jost = Jost({
 const brandFont = localFont({
   src: [
     {
-      path: "../public/fonts/Brand.woff",
+      path: "../public/fonts/Brand.otf",
       weight: "400",
       style: "normal",
     }
   ],
   variable: "--font-brand",
+  display: "swap",
+});
+
+const amalfiFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/AmalfiCoast.ttf",
+      weight: "400",
+      style: "normal",
+    }
+  ],
+  variable: "--font-amalfi",
   display: "swap",
 });
 
@@ -49,7 +61,7 @@ export default function RootLayout({
     return (
         <html lang="en-GB">
             <body
-                className={`${cormorant.variable} ${dancing.variable} ${jost.variable} ${brandFont.variable}`}
+                className={`${cormorant.variable} ${dancing.variable} ${jost.variable} ${brandFont.variable} ${amalfiFont.variable}`}
             >
                 {!isAdmin && <Navbar />}
                 <main className="min-h-screen">

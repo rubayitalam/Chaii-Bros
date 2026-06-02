@@ -31,7 +31,7 @@ const DiscoverSection = ({ items }: DiscoverSectionProps) => {
                 {/* Section Title */}
                 <div className="text-center mb-12 md:mb-16">
                     <h2 className="inline-flex flex-wrap items-baseline justify-center gap-4">
-                        <span className="font-script text-4xl md:text-5xl lg:text-6xl text-foreground">Discover</span>
+                        <span className="font-[family-name:var(--font-amalfi)] text-4xl md:text-5xl lg:text-6xl text-foreground">Discover</span>
                         <span className="font-display text-xl md:text-2xl lg:text-3xl tracking-[0.15em] uppercase text-primary font-light">
                             THE CHAII BROS EXPERIENCE
                         </span>

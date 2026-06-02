@@ -11,7 +11,7 @@ const FollowSection = () => {
                 {/* Section Title */}
                 <div className="text-center mb-8">
                     <h2 className="inline-flex flex-wrap items-baseline justify-center gap-4">
-                        <span className="font-script text-4xl md:text-5xl lg:text-6xl text-foreground">Follow</span>
+                        <span className="font-[family-name:var(--font-amalfi)] text-4xl md:text-5xl lg:text-6xl text-foreground">Follow</span>
                         <span className="font-display text-xl md:text-2xl lg:text-3xl tracking-[0.15em] uppercase text-primary font-light">
                             THE BREW CLUB
                         </span>
