@@ -14,7 +14,7 @@ const AboutSection = () => {
                         </span>
                         <span className="inline-flex items-baseline gap-3 ml-4">
                             <span className="font-[family-name:var(--font-amalfi)] text-4xl md:text-5xl lg:text-6xl text-foreground">since</span>
-                            <span className="font-[family-name:var(--font-amalfi)] text-5xl md:text-6xl lg:text-7xl text-foreground">2019</span>
+                            <span className="font-[family-name:var(--font-amalfi)] text-2xl md:text-3xl lg:text-4xl text-foreground">2019</span>
                         </span>
                     </h2>
 
